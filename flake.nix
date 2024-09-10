@@ -31,9 +31,9 @@
         # Install Homebrew before nix script execution
         preUserActivation.text = ''
           # Install Catppuccin Frappe Theme on Warp terminal
-          if ! [[ -f "~/.warp/themes/catppuccin_frappe.yml" ]]; then
+          if ! [[ -f "/Users/${username}/.warp/themes/catppuccin_frappe.yml" ]]; then
             mkdir -p ~/.warp/themes/
-            curl --output-dir ~/.warp/themes -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
+            curl --output-dir /Users/${username}/.warp/themes -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
           fi
 
       	  if ! [[ -f "/opt/homebrew/bin/brew" ]] && ! [[ -f "/usr/local/bin/brew" ]]; then
