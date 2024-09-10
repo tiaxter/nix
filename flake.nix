@@ -58,6 +58,7 @@
     	    "iina" # IINA media player
     	    "lunar" # Lunar (adaptive brightness for external displays)
     	    "yaak" # Yaak (a lightweight Postman alternative)
+          "font-departure-mono" # Pixel font 
       	];
       	brews = [ 
     	    "oven-sh/bun/bun" # Bun (best JS engine)
@@ -141,12 +142,16 @@
   	      };
 
           # Set Warp theme
-          "dev.warp.Warp-Stable".Theme = builtins.toJSON {
-            Custom = {
+          "dev.warp.Warp-Stable" = {
+            Theme = builtins.toJSON {
+              Custom = {
                 name = "Catppuccin Frappe";
                 path = "/Users/${username}/.warp/themes/catppuccin_frappe.yml";
               };
             };
+            FontName = builtins.toJSON "Departure Mono";
+            FontSize = builtins.toJSON "13.0";
+          };
     	  };
       };
 
