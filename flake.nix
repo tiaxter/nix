@@ -30,6 +30,12 @@
       system.activationScripts = {
         # Install Homebrew before nix script execution
         preUserActivation.text = ''
+          # Install Catppuccin Frappe Theme on Warp terminal
+          if ! [[ -f "~/.warp/themes/catppuccin_frappe.yml" ]]; then
+            mkdir -p ~/.warp/themes/
+            curl --output-dir ~/.warp/themes -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
+          fi
+
       	  if ! [[ -f "/opt/homebrew/bin/brew" ]] && ! [[ -f "/usr/local/bin/brew" ]]; then
             echo "[+] Installing Homebrew"
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -129,9 +135,18 @@
     	  };
 
     	  CustomUserPreferences = {
+          # Set Arc browser different icon
   	      "company.thebrowser.Browser" = {
             currentAppIconName = "colorful";
   	      };
+
+          # Set Warp theme
+          "dev.warp.Warp-Stable".Theme = builtins.toJSON {
+            Custom = {
+                name = "Catppuccin Frappe";
+                path = "/Users/${username}/.warp/themes/catppuccin_frappe.yml";
+              };
+            };
     	  };
       };
 
