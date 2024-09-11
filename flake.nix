@@ -62,6 +62,7 @@
     	    "lunar" # Lunar (adaptive brightness for external displays)
     	    "yaak" # Yaak (a lightweight Postman alternative)
           "font-departure-mono" # Pixel font 
+          "logi-options-plus" # Manager for Logitech products
       	];
       	brews = [ 
     	    "oven-sh/bun/bun" # Bun (best JS engine)
