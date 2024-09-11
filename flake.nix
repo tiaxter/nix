@@ -30,6 +30,9 @@
       system.activationScripts = {
         # Install Homebrew before nix script execution
         preUserActivation.text = ''
+          # Set 'disable sleep when power adapter attached with closed lid'
+          sudo pmset disablesleep 1
+        
           # Install Catppuccin Frappe Theme on Warp terminal
           if ! [[ -f "/Users/${username}/.warp/themes/catppuccin_frappe.yml" ]]; then
             mkdir -p ~/.warp/themes/
@@ -126,7 +129,6 @@
     	  };
 
     	  screencapture = {
-  	      location = "clipboard"; # Copy screenshotted image to the clipboard
   	      type = "png"; # Set screenshot image type to png
     	  };
 
@@ -136,6 +138,11 @@
     	  };
 
     	  CustomUserPreferences = {
+          # Set screenshot location to 'clipboard'
+          "com.apple.screencapture" = {
+            target = "clipboard";
+          };
+        
           # Set Arc browser different icon
   	      "company.thebrowser.Browser" = {
             currentAppIconName = "colorful";
