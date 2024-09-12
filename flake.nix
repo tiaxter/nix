@@ -166,6 +166,11 @@
           "com.apple.HIToolbox" = {
             AppleFnUsageType = 0;
           };
+
+          # Show battery percentage in top menu bar
+          "com.apple.controlcenter" = {
+            BatteryShowPercentage = true;
+          };
         
           # Set screenshot location to 'clipboard'
           "com.apple.screencapture" = {
