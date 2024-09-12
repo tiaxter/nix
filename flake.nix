@@ -150,6 +150,17 @@
           askForPasswordDelay = 0; # The number of seconds to delay before the password will be required to unlock or stop the screen saver
         };
 
+        CustomSystemPreferences = {
+          # Disable cmd-space for native spotlight
+          "com.apple.symbolichotkeys" = {
+            AppleSymbolicHotKeys = {
+              "64" = {
+                enabled = false;
+              };
+            };
+          };
+        };
+
         CustomUserPreferences = {
           # Disable dictation on double 'cltr' press
           "com.apple.HIToolbox" = {
