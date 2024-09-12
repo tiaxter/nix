@@ -106,7 +106,7 @@
             "/Applications/PhpStorm.app"
             "/Applications/Spotify.app"
           ];
-    	  };
+        };
 
         NSGlobalDomain = {
           # Remove Mac keyboard input delay
@@ -120,7 +120,7 @@
 
           NSNavPanelExpandedStateForSaveMode = true; # Expand save panel by default
           NSDocumentSaveNewDocumentsToCloud = false; # Save to disk (not to iCloud) by default
-    	  };
+        };
 
         WindowManager = {
           EnableStandardClickToShowDesktop = false; # Disable click wallpaper to reveal desktop 
