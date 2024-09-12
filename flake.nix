@@ -150,6 +150,11 @@
         };
 
         CustomUserPreferences = {
+          # Disable dictation on double 'cltr' press
+          "com.apple.HIToolbox" = {
+            AppleFnUsageType = 0;
+          };
+        
           # Set screenshot location to 'clipboard'
           "com.apple.screencapture" = {
             target = "clipboard";
