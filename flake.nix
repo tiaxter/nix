@@ -15,6 +15,7 @@
   let
     username = "tiaxter";
     email = "jerrytiapalmiotto@gmail.com";
+    homeDirectory = "/Users/${username}";
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -32,11 +33,21 @@
         preUserActivation.text = ''
           # Set 'disable sleep when power adapter attached with closed lid'
           sudo pmset disablesleep 1
+
+          # HidApiTester executable path
+          hidapitesterExecutablePath="/usr/local/bin/hidapitester"
+
+          # Download and install hidapitester
+          if ! [[ -f "$hidapitesterExecutablePath" ]]; then
+            curl -L https://github.com/todbot/hidapitester/releases/latest/download/hidapitester-macos-arm64.zip | tar -xf - -C . 
+            sudo mv hidapitester "$hidapitesterExecutablePath"
+            sudo chmod +x "$hidapitesterExecutablePath"
+          fi
         
           # Install Catppuccin Frappe Theme on Warp terminal
-          if ! [[ -f "/Users/${username}/.warp/themes/catppuccin_frappe.yml" ]]; then
-            mkdir -p ~/.warp/themes/
-            curl --output-dir /Users/${username}/.warp/themes -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
+          if ! [[ -f "${homeDirectory}/.warp/themes/catppuccin_frappe.yml" ]]; then
+            mkdir -p "${homeDirectory}/.warp/themes/"
+            curl --output-dir "${homeDirectory}/.warp/themes" -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
           fi
 
       	  if ! [[ -f "/opt/homebrew/bin/brew" ]] && ! [[ -f "/usr/local/bin/brew" ]]; then
