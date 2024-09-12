@@ -74,6 +74,7 @@
           "yaak" # Yaak (a lightweight Postman alternative)
           "font-departure-mono" # Pixel font 
           "logi-options-plus" # Manager for Logitech products
+          "karabiner-elements" # Keyboard customiser
       	];
       	brews = [ 
           "oven-sh/bun/bun" # Bun (best JS engine)
@@ -243,6 +244,14 @@
               userName  = "${username}";
               userEmail = "${email}";
             };
+          };
+
+          # Karabiner configuration
+          xdg.configFile.karabiner = {
+            enable = true;
+            source = ./karabiner/karabiner.json;
+            target = "/.config/karabiner/karabiner.json";
+            recursive = true;
           };
         };
       };
