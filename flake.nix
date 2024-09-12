@@ -54,7 +54,7 @@
             echo "[+] Installing Homebrew"
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           fi
-    	  '';
+        '';
       };
 
       # Enable homebrew
@@ -87,69 +87,69 @@
       # Set Mac OS settings
       system.defaults = {
         dock = {
-  	      tilesize = 45; # Set dock icon size
-  	      autohide = true; # Set dock auto hide behaviour
-  	      show-recents = false; # Hide recent used application in the dock
-  	      mru-spaces = false; # Disable workspace rearrangement based on used apps
-  	      expose-group-by-app = true; # Workaround for Aerospace and Mission Control
+          tilesize = 45; # Set dock icon size
+          autohide = true; # Set dock auto hide behaviour
+          show-recents = false; # Hide recent used application in the dock
+          mru-spaces = false; # Disable workspace rearrangement based on used apps
+          expose-group-by-app = true; # Workaround for Aerospace and Mission Control
 
-  	      # Disable hot corners functionality
-  	      wvous-bl-corner = 1;
-  	      wvous-br-corner = 1;
-  	      wvous-tl-corner = 1;
-  	      wvous-tr-corner = 1;
+          # Disable hot corners functionality
+          wvous-bl-corner = 1;
+          wvous-br-corner = 1;
+          wvous-tl-corner = 1;
+          wvous-tr-corner = 1;
 
   	      # Set pinned apps on the dock
-  	      persistent-apps = [
+          persistent-apps = [
             "/Applications/Arc.app"
             "/Applications/Warp.app"
             "/Applications/PhpStorm.app"
             "/Applications/Spotify.app"
-  	      ];
+          ];
     	  };
 
-    	  NSGlobalDomain = {
+        NSGlobalDomain = {
           # Remove Mac keyboard input delay
-  	      InitialKeyRepeat = 10;
-  	      KeyRepeat = 1;
-  	      ApplePressAndHoldEnabled = false;
+          InitialKeyRepeat = 10;
+          KeyRepeat = 1;
+          ApplePressAndHoldEnabled = false;
 
-  	      AppleShowAllExtensions = true; # Show file extensions in Finder
-  	      AppleShowAllFiles = true; # Show hidden files in Finder
-  	      NSTableViewDefaultSizeMode = 1; # Set small icon size in Finder sidebar
+          AppleShowAllExtensions = true; # Show file extensions in Finder
+          AppleShowAllFiles = true; # Show hidden files in Finder
+          NSTableViewDefaultSizeMode = 1; # Set small icon size in Finder sidebar
 
-  	      NSNavPanelExpandedStateForSaveMode = true; # Expand save panel by default
-  	      NSDocumentSaveNewDocumentsToCloud = false; # Save to disk (not to iCloud) by default
+          NSNavPanelExpandedStateForSaveMode = true; # Expand save panel by default
+          NSDocumentSaveNewDocumentsToCloud = false; # Save to disk (not to iCloud) by default
     	  };
 
-    	  WindowManager = {
-  	      EnableStandardClickToShowDesktop = false; # Disable click wallpaper to reveal desktop 
-    	  };
+        WindowManager = {
+          EnableStandardClickToShowDesktop = false; # Disable click wallpaper to reveal desktop 
+        };
 
-    	  finder = {
+        finder = {
           FXDefaultSearchScope = "SCcf"; # Search in the current folder by default
-  	      FXPreferredViewStyle = "Nlsv"; # Set default file view to list
-  	      ShowPathbar = true; # Show path bar
-    	  };
+          FXPreferredViewStyle = "Nlsv"; # Set default file view to list
+          ShowPathbar = true; # Show path bar
+        };
 
-    	  menuExtraClock = {
-  	      Show24Hour = true; # Show time using 24 hours format
-  	      ShowDate = 1; # Show always the date
-  	      ShowDayOfMonth = true;
-  	      ShowDayOfWeek = true;
-  	      ShowSeconds = true;
-    	  };
+        menuExtraClock = {
+          Show24Hour = true; # Show time using 24 hours format
+          ShowDate = 1; # Show always the date
+          ShowDayOfMonth = true;
+          ShowDayOfWeek = true;
+          ShowSeconds = true;
+        };
 
-    	  screencapture = {
-  	      type = "png"; # Set screenshot image type to png
-    	  };
+        screencapture = {
+          type = "png"; # Set screenshot image type to png
+        };
 
-    	  screensaver = {
-  	      askForPassword = true; # Ask password after screensaver
-  	      askForPasswordDelay = 0; # The number of seconds to delay before the password will be required to unlock or stop the screen saver
-    	  };
+        screensaver = {
+          askForPassword = true; # Ask password after screensaver
+          askForPasswordDelay = 0; # The number of seconds to delay before the password will be required to unlock or stop the screen saver
+        };
 
-    	  CustomUserPreferences = {
+        CustomUserPreferences = {
           # Set screenshot location to 'clipboard'
           "com.apple.screencapture" = {
             target = "clipboard";
