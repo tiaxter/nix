@@ -63,22 +63,22 @@
 
       	taps = [ "oven-sh/bun" ];
       	casks = [ 
-    	    "warp" # Warp (terminal)
-    	    "nikitabobko/tap/aerospace" # Aerospace (tiling window manager)
-    	    "phpstorm" # PHPStorm
-    	    "raycast" # Raycast (spotlight replacement)
-    	    "spotify" # Spotify (music streaming service)
-    	    "arc" # Arc browser
-    	    "iina" # IINA media player
-    	    "lunar" # Lunar (adaptive brightness for external displays)
-    	    "yaak" # Yaak (a lightweight Postman alternative)
+          "warp" # Warp (terminal)
+          "nikitabobko/tap/aerospace" # Aerospace (tiling window manager)
+          "phpstorm" # PHPStorm
+          "raycast" # Raycast (spotlight replacement)
+          "spotify" # Spotify (music streaming service)
+          "arc" # Arc browser
+          "iina" # IINA media player
+          "lunar" # Lunar (adaptive brightness for external displays)
+          "yaak" # Yaak (a lightweight Postman alternative)
           "font-departure-mono" # Pixel font 
           "logi-options-plus" # Manager for Logitech products
       	];
       	brews = [ 
-    	    "oven-sh/bun/bun" # Bun (best JS engine)
-    	    "zoxide" # Zoxide (cd replacement)
-    	    "helix" # Helix (neovim replacement)
+          "oven-sh/bun/bun" # Bun (best JS engine)
+          "zoxide" # Zoxide (cd replacement)
+          "helix" # Helix (neovim replacement)
           "nushell" # Nushell (data based shell)
           "direnv" # Direnv (navigate through folders and import .env file automatically)
       	];
@@ -104,7 +104,7 @@
             "/Applications/Arc.app"
             "/Applications/Warp.app"
             "/Applications/PhpStorm.app"
-      		  "/Applications/Spotify.app"
+            "/Applications/Spotify.app"
   	      ];
     	  };
 
@@ -156,9 +156,9 @@
           };
         
           # Set Arc browser different icon
-  	      "company.thebrowser.Browser" = {
+          "company.thebrowser.Browser" = {
             currentAppIconName = "colorful";
-  	      };
+          };
 
           # Set Warp theme
           "dev.warp.Warp-Stable" = {
@@ -171,7 +171,7 @@
             FontName = builtins.toJSON "Departure Mono";
             FontSize = builtins.toJSON "13.0";
           };
-    	  };
+        };
       };
 
       # Users settings (TODO avoid hardcoding username)
