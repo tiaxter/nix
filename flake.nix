@@ -177,7 +177,7 @@
       # Users settings (TODO avoid hardcoding username)
       users.users."${username}" = {
         name = "${username}";
-        home = "/Users/${username}";
+        home = "${homeDirectory}";
       };
 
       # Home-manager settings
@@ -185,7 +185,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users."${username}" = {
-          # TODO: capire a che cazzo serve
           home.stateVersion = "23.05";
 
           programs = {
