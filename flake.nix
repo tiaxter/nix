@@ -232,7 +232,7 @@
                   load_dotenv = true;
                 };
                 whitelist = {
-                  prefix = [ "/Users/${username}" ];
+                  prefix = [ "${homeDirectory}" ];
                 };
               };
             };
