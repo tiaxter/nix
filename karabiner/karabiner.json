@@ -1,50 +1,50 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "Switch MX Master 3 device",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "1",
-                                    "modifiers": {
-                                        "mandatory": ["left_command", "right_option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "2",
-                                    "modifiers": {
-                                        "mandatory": ["left_command", "right_option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "3",
-                                    "modifiers": {
-                                        "mandatory": ["left_command", "right_option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "name": "Default profile",
-            "selected": true
-        }
-    ]
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Switch MX Master 3 device",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "mandatory": ["left_command", "right_option"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "mandatory": ["left_command", "right_option"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "mandatory": ["left_command", "right_option"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [{ "shell_command": "/usr/local/bin/hidapitester --vidpid 046D/B034 --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Default profile",
+      "selected": true
+    }
+  ]
 }
