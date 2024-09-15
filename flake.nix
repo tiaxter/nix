@@ -57,142 +57,19 @@
         '';
       };
 
-      # Enable homebrew
-      homebrew = {
-        enable = true;
+      imports = [ 
+        ./common/homebrew.nix 
+        ./common/mac-os-settings.nix
+        ./common/home-manager.nix
+      ];
 
-      	taps = [ "oven-sh/bun" ];
-      	casks = [ 
-          "warp" # Warp (terminal)
-          "nikitabobko/tap/aerospace" # Aerospace (tiling window manager)
-          "phpstorm" # PHPStorm
-          "raycast" # Raycast (spotlight replacement)
-          "spotify" # Spotify (music streaming service)
-          "arc" # Arc browser
-          "iina" # IINA media player
-          "lunar" # Lunar (adaptive brightness for external displays)
-          "yaak" # Yaak (a lightweight Postman alternative)
-          "font-departure-mono" # Pixel font 
-          "logi-options-plus" # Manager for Logitech products
-          "karabiner-elements" # Keyboard customiser
-      	];
-      	brews = [ 
-          "oven-sh/bun/bun" # Bun (best JS engine)
-          "zoxide" # Zoxide (cd replacement)
-          "helix" # Helix (neovim replacement)
-          "nushell" # Nushell (data based shell)
-          "direnv" # Direnv (navigate through folders and import .env file automatically)
-      	];
-      };
-
-      # Set Mac OS settings
-      system.defaults = {
-        dock = {
-          tilesize = 45; # Set dock icon size
-          autohide = true; # Set dock auto hide behaviour
-          show-recents = false; # Hide recent used application in the dock
-          mru-spaces = false; # Disable workspace rearrangement based on used apps
-          expose-group-by-app = true; # Workaround for Aerospace and Mission Control
-
-          # Disable hot corners functionality
-          wvous-bl-corner = 1;
-          wvous-br-corner = 1;
-          wvous-tl-corner = 1;
-          wvous-tr-corner = 1;
-
-  	      # Set pinned apps on the dock
-          persistent-apps = [
-            "/Applications/Arc.app"
-            "/Applications/Warp.app"
-            "/Applications/PhpStorm.app"
-            "/Applications/Spotify.app"
-          ];
-        };
-
-        NSGlobalDomain = {
-          # Remove Mac keyboard input delay
-          InitialKeyRepeat = 10;
-          KeyRepeat = 1;
-          ApplePressAndHoldEnabled = false;
-
-          AppleShowAllExtensions = true; # Show file extensions in Finder
-          AppleShowAllFiles = true; # Show hidden files in Finder
-          NSTableViewDefaultSizeMode = 1; # Set small icon size in Finder sidebar
-
-          NSNavPanelExpandedStateForSaveMode = true; # Expand save panel by default
-          NSDocumentSaveNewDocumentsToCloud = false; # Save to disk (not to iCloud) by default
-        };
-
-        WindowManager = {
-          EnableStandardClickToShowDesktop = false; # Disable click wallpaper to reveal desktop 
-        };
-
-        finder = {
-          FXDefaultSearchScope = "SCcf"; # Search in the current folder by default
-          FXPreferredViewStyle = "Nlsv"; # Set default file view to list
-          ShowPathbar = true; # Show path bar
-        };
-
-        menuExtraClock = {
-          Show24Hour = true; # Show time using 24 hours format
-          ShowDate = 1; # Show always the date
-          ShowDayOfMonth = true;
-          ShowDayOfWeek = true;
-          ShowSeconds = true;
-        };
-
-        screencapture = {
-          type = "png"; # Set screenshot image type to png
-        };
-
-        screensaver = {
-          askForPassword = true; # Ask password after screensaver
-          askForPasswordDelay = 0; # The number of seconds to delay before the password will be required to unlock or stop the screen saver
-        };
-
-        CustomSystemPreferences = {
-          # Disable cmd-space for native spotlight
-          "com.apple.symbolichotkeys" = {
-            AppleSymbolicHotKeys = {
-              "64" = {
-                enabled = false;
-              };
-            };
-          };
-        };
-
-        CustomUserPreferences = {
-          # Disable dictation on double 'cltr' press
-          "com.apple.HIToolbox" = {
-            AppleFnUsageType = 0;
-          };
-
-          # Show battery percentage in top menu bar
-          "com.apple.controlcenter" = {
-            BatteryShowPercentage = true;
-          };
-        
-          # Set screenshot location to 'clipboard'
-          "com.apple.screencapture" = {
-            target = "clipboard";
-          };
-        
-          # Set Arc browser different icon
-          "company.thebrowser.Browser" = {
-            currentAppIconName = "colorful";
-          };
-
-          # Set Warp theme
-          "dev.warp.Warp-Stable" = {
-            Theme = builtins.toJSON {
-              Custom = {
-                name = "Catppuccin Frappe";
-                path = "/Users/${username}/.warp/themes/catppuccin_frappe.yml";
-              };
-            };
-            FontName = builtins.toJSON "Departure Mono";
-            FontSize = builtins.toJSON "13.0";
-          };
+      modules.macOsSettings.homeDirectory = "${homeDirectory}";
+      modules.homeManager = {
+        username = "${username}";
+        homeDirectory = "${homeDirectory}";
+        git = {
+          username = "${username}";
+          email = "${email}";
         };
       };
 
@@ -201,79 +78,6 @@
         name = "${username}";
         home = "${homeDirectory}";
       };
-
-      # Home-manager settings
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        users."${username}" = {
-          home.stateVersion = "23.05";
-
-          programs = {
-            # Let Home Manager install and manage itself.
-            home-manager.enable = true;
-            
-            # Enable zsh
-            zsh = {
-              enable = true;
-            };
-
-            # Enable fish shell
-            fish = {
-              enable = true;
-            };
-
-            # Enable nushell
-            nushell = {
-              enable = true;
-            };
-
-            # Enable zoxide and configure it
-            zoxide = {
-              enable = true;
-              enableFishIntegration = true;
-              enableZshIntegration = true;
-              enableNushellIntegration = true;
-              options = [ "--cmd cd" ]; # use "cd" alias
-            };
-
-            # Enable direnv and configure it
-            direnv = {
-              enable = true;
-              # enableFishIntegration = true;
-              enableZshIntegration = true;
-              enableNushellIntegration = true;
-              # Load .env file automatically without looking for a .envrc file
-              config = {
-                global = {
-                  load_dotenv = true;
-                };
-                whitelist = {
-                  prefix = [ "${homeDirectory}" ];
-                };
-              };
-            };
-
-            # Set git data
-            git = {
-              enable = true;
-              userName  = "${username}";
-              userEmail = "${email}";
-            };
-          };
-
-          # Karabiner configuration
-          xdg.configFile.karabiner = {
-            enable = true;
-            source = ./karabiner/karabiner.json;
-            target = "/.config/karabiner/karabiner.json";
-            recursive = true;
-          };
-        };
-      };
-
-      # Enable sudo authentication with Touch ID.
-      security.pam.enableSudoTouchIdAuth = true;
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
