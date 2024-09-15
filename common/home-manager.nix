@@ -104,6 +104,9 @@ in {
           target = "/.config/karabiner/karabiner.json";
           recursive = true;
         };
+
+        # Aerospace configuration
+        xdg.configFile.aerospace.source = ../aerospace;
       };
     };
   };
