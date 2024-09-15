@@ -16,7 +16,7 @@
     username = "tiaxter";
     email = "jerrytiapalmiotto@gmail.com";
     homeDirectory = "/Users/${username}";
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [ vim neovim ];
@@ -28,41 +28,14 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      system.activationScripts = {
-        # Install Homebrew before nix script execution
-        preUserActivation.text = ''
-          # Set 'disable sleep when power adapter attached with closed lid'
-          sudo pmset disablesleep 1
-
-          # HidApiTester executable path
-          hidapitesterExecutablePath="/usr/local/bin/hidapitester"
-
-          # Download and install hidapitester
-          if ! [[ -f "$hidapitesterExecutablePath" ]]; then
-            curl -L https://github.com/todbot/hidapitester/releases/latest/download/hidapitester-macos-arm64.zip | tar -xf - -C . 
-            sudo mv hidapitester "$hidapitesterExecutablePath"
-            sudo chmod +x "$hidapitesterExecutablePath"
-          fi
-        
-          # Install Catppuccin Frappe Theme on Warp terminal
-          if ! [[ -f "${homeDirectory}/.warp/themes/catppuccin_frappe.yml" ]]; then
-            mkdir -p "${homeDirectory}/.warp/themes/"
-            curl --output-dir "${homeDirectory}/.warp/themes" -LO https://github.com/catppuccin/warp/raw/main/themes/catppuccin_frappe.yml
-          fi
-
-      	  if ! [[ -f "/opt/homebrew/bin/brew" ]] && ! [[ -f "/usr/local/bin/brew" ]]; then
-            echo "[+] Installing Homebrew"
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          fi
-        '';
-      };
-
       imports = [ 
+        ./common/pre-execution-script.nix
         ./common/homebrew.nix 
         ./common/mac-os-settings.nix
         ./common/home-manager.nix
       ];
 
+      modules.preExecutionScript.homeDirectory = "${homeDirectory}";
       modules.macOsSettings.homeDirectory = "${homeDirectory}";
       modules.homeManager = {
         username = "${username}";
@@ -78,6 +51,10 @@
         name = "${username}";
         home = "${homeDirectory}";
       };
+
+     system.activationScripts.preUserActivation.text = lib.mkAfter ''
+        echo "Here there's a way to extend the preUserActivationScript"
+      '';
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
