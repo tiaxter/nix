@@ -95,6 +95,7 @@ in {
             userName  = "${cfg.git.username}";
             userEmail = "${cfg.git.email}";
           };
+
         };
 
         # Karabiner configuration
@@ -107,6 +108,9 @@ in {
 
         # Aerospace configuration
         xdg.configFile.aerospace.source = ../aerospace;
+
+        # Helix configuration
+        xdg.configFile.helix.source = ../helix;
       };
     };
   };
