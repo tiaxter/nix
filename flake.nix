@@ -16,72 +16,50 @@
     username = "tiaxter";
     email = "jerrytiapalmiotto@gmail.com";
     homeDirectory = "/Users/${username}";
-    configuration = { pkgs, lib, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages = with pkgs; [ vim neovim ];
 
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      imports = [ 
-        ./common/pre-execution-script.nix
-        ./common/homebrew.nix 
-        ./common/mac-os-settings.nix
-        ./common/home-manager.nix
-      ];
-
-      modules.preExecutionScript.homeDirectory = "${homeDirectory}";
-      modules.macOsSettings.homeDirectory = "${homeDirectory}";
+    # Modules args
+    args = {
       modules.homeManager = {
+        # Home and user data
         username = "${username}";
         homeDirectory = "${homeDirectory}";
+
+        # Git data
         git = {
           username = "${username}";
           email = "${email}";
         };
       };
 
-      # Users settings (TODO avoid hardcoding username)
+      # Users settings
       users.users."${username}" = {
         name = "${username}";
         home = "${homeDirectory}";
       };
 
-     system.activationScripts.preUserActivation.text = lib.mkAfter ''
-        echo "Here there's a way to extend the preUserActivationScript"
-      '';
-
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
-      # programs.fish.enable = true;
-
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 4;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in
   {
+
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+    # $ nix run nix-darwin -- switch --flake .#personal
+    darwinConfigurations."personal" = nix-darwin.lib.darwinSystem {
       modules = [ 
         home-manager.darwinModules.home-manager
-        configuration
+        ./profiles/personal.nix
+        args
       ];
     };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."simple".pkgs;
+    # $ nix run nix-darwin -- switch --flake .#work
+    darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./profiles/work.nix
+        args
+      ];
+    };
   };
 }

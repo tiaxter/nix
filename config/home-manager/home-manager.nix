@@ -1,6 +1,6 @@
 { config, pkgs, lib, ...}: 
 let 
-  cfg = config.modules.homeManager;
+    cfg = config.modules.homeManager;
 in {
   # Params
   options.modules.homeManager = {
@@ -38,79 +38,52 @@ in {
       users."${cfg.username}" = {
         home.stateVersion = "23.05";
 
+        imports = [
+          ./zoxide.nix
+          ./direnv.nix
+          ./git.nix
+        ];
+
+        # Set imported modules args
+        modules.direnv.whitelistPrefix = "${cfg.homeDirectory}";
+        modules.git = {
+          username = "${cfg.git.username}";
+          email = "${cfg.git.email}";
+        };
+
         programs = {
           # Let Home Manager install and manage itself.
           home-manager.enable = true;
-      
+
           # Enable zsh
-          zsh = {
-            enable = true;
-          };
+          zsh.enable = true;
 
           # Enable fish shell
-          fish = {
-            enable = true;
-          };
+          fish.enable = true;
 
           # Enable nushell
-          nushell = {
-            enable = true;
-          };
-
-          # Enable zoxide and configure it
-          zoxide = {
-            enable = true;
-            enableFishIntegration = true;
-            enableZshIntegration = true;
-            enableNushellIntegration = true;
-            options = [ "--cmd cd" ]; # use "cd" alias
-          };
-
-          # Enable direnv and configure it
-          direnv = {
-            enable = true;
-            # enableFishIntegration = true;
-            enableZshIntegration = true;
-            enableNushellIntegration = true;
-            # Load .env file automatically without looking for a .envrc file
-            config = {
-              global = {
-                load_dotenv = true;
-              };
-              whitelist = {
-                prefix = [ "${cfg.homeDirectory}" ];
-              };
-            };
-          };
+          nushell.enable = true;
 
           eza = {
             enable = true;
             git = true;
             icons = true;
           };
-
-          # Set git data
-          git = {
-            enable = true;
-            userName  = "${cfg.git.username}";
-            userEmail = "${cfg.git.email}";
-          };
-
         };
 
         # Karabiner configuration
         xdg.configFile.karabiner = {
           enable = true;
-          source = ../karabiner/karabiner.json;
+          source = ./karabiner/karabiner.json;
           target = "/.config/karabiner/karabiner.json";
           recursive = true;
         };
 
         # Aerospace configuration
-        xdg.configFile.aerospace.source = ../aerospace;
+        xdg.configFile.aerospace.source = ./aerospace;
 
         # Helix configuration
-        xdg.configFile.helix.source = ../helix;
+        xdg.configFile.helix.source = ./helix;
       };
     };
   };
