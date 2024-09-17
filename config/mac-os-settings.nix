@@ -16,6 +16,7 @@
 
       # Set pinned apps on the dock
       persistent-apps = [
+        "/System/Applications/Launchpad.app"
         "/Applications/Arc.app"
         "/Applications/Warp.app"
         "/Applications/PhpStorm.app"
