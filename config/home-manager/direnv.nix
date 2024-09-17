@@ -14,7 +14,6 @@ in {
     # Enable direnv and configure it
     programs.direnv = {
       enable = true;
-      # enableFishIntegration = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
       # Load .env file automatically without looking for a .envrc file

@@ -4,16 +4,18 @@ let
 in {
   # Params
   options.modules.homeManager = {
-    username = lib.mkOption {
-      description = "Username used on the host";
-      type = lib.types.str;
-      default = "";
-    };
+    host = {
+      username = lib.mkOption {
+        description = "Username used on the host";
+        type = lib.types.str;
+        default = "";
+      };
 
-    homeDirectory = lib.mkOption {
-      description = "Home directory path used on the host";
-      type = lib.types.str;
-      default = "";
+      home = lib.mkOption {
+        description = "Home directory path used on the host";
+        type = lib.types.str;
+        default = "";
+      };
     };
 
     git = {
@@ -35,7 +37,7 @@ in {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users."${cfg.username}" = {
+      users."${cfg.host.username}" = {
         home.stateVersion = "23.05";
 
         imports = [
@@ -45,11 +47,8 @@ in {
         ];
 
         # Set imported modules args
-        modules.direnv.whitelistPrefix = "${cfg.homeDirectory}";
-        modules.git = {
-          username = "${cfg.git.username}";
-          email = "${cfg.git.email}";
-        };
+        modules.direnv.whitelistPrefix = "${cfg.host.home}";
+        modules.git = cfg.git;
 
         programs = {
           # Let Home Manager install and manage itself.

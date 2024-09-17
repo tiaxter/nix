@@ -21,8 +21,10 @@
     args = {
       modules.homeManager = {
         # Home and user data
-        username = "${username}";
-        homeDirectory = "${homeDirectory}";
+        host = {
+          username = "${username}";
+          home = "${homeDirectory}";
+        };
 
         # Git data
         git = {

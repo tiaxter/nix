@@ -102,7 +102,7 @@
         Theme = builtins.toJSON {
           Custom = {
             name = "Catppuccin Frappe";
-            path = "${config.modules.homeManager.homeDirectory}/.warp/themes/catppuccin_frappe.yml";
+            path = "${config.modules.homeManager.host.home}/.warp/themes/catppuccin_frappe.yml";
           };
         };
         FontName = builtins.toJSON "Departure Mono";
