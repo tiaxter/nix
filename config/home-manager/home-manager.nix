@@ -84,6 +84,9 @@ in {
 
         # Helix configuration
         xdg.configFile.helix.source = ./helix;
+
+        # IdeaVIM configuration
+        home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
       };
     };
   };

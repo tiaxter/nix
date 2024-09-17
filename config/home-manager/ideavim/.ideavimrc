@@ -1,0 +1,60 @@
+" Number of lines before the top/bottom of the screen before scrolling
+set scrolloff = 10
+
+" Ensure VIM modes and any commands are displayed at the bottom of the screen
+set showmode
+set showcmd
+
+" Disable bell sound when you enter an invalid input
+set visualbell
+
+" Enable NERDTree
+set nerdtree
+
+" Enable surround plugin
+set surround
+
+" Enable Highlighted Yank (it briefly highlights the content you’ve just yanked)
+set highlightedyank
+
+" Set leader key
+let mapleader = " "
+
+" Map jk to Esc button
+imap jk <Esc>
+
+" Map ctrl-c to comment the current line
+map <C-c> <Action>(CommentByLineComment)
+
+" Map space + "y" to copy to the system clipboard
+vnoremap <Space>y "*y
+
+" Map space + "p" to paste from the system clipboard
+nnoremap <Space>p "*p
+
+" Map space + "rr" to rename an element
+map <leader>rr <Action>(RenameElement)
+
+" Map space + "sw" to surround an element
+map <leader>sw <Action>(SurroundWith)
+
+" Map space + "oi" to optimize the imports
+map <leader>oi <Action>(OptimizeImports)
+
+" Map space + "rc" to reformat the code
+map <leader>rc <Action>(ReformatCode)
+
+" Map space + "gb" to toggle the git blame
+map <leader>gb <Action>(Annotate)
+
+" Map space + "d" to toggle breakpoint
+map <leader>d <Action>(ToggleLineBreakpoint)
+
+" Map space + "q" to close the current project
+map <leader>q <Action>(CloseProject)
+
+" Map space + "f" to open the file picker (close it pressing "q")
+map <leader>f :NERDTreeToggle<CR>
+
+" Map space + "ff" to open "go to file" popup
+map <leader>ff <action>(GotoFile)
