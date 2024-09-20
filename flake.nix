@@ -63,7 +63,7 @@
       modules = [ 
         lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
-        ./profiles/personal.nix
+        ./profiles/personal
         args
       ];
     };
@@ -73,7 +73,7 @@
       modules = [
         lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
-        ./profiles/work.nix
+        ./profiles/work
         args
       ];
     };

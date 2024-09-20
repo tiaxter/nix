@@ -1,7 +1,8 @@
 { pkgs, lib, self, config, ... }: {
   # Import common configuration
   imports = [
-    ./base.nix
+    ../base.nix
+    ./php.nix
   ];
 
   # List packages installed in system profile. To search by name, run:

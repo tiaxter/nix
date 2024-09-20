@@ -1,7 +1,7 @@
 { pkgs, lib, self, config, ... }: {
   # Import common configuration
   imports = [
-    ./base.nix
+    ../base.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
