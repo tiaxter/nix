@@ -44,6 +44,7 @@ in {
           ./zoxide.nix
           ./direnv.nix
           ./git.nix
+          ./mise.nix
         ];
 
         # Set imported modules args

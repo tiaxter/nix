@@ -9,7 +9,6 @@
     };
 
     taps = [
-      "oven-sh/bun"
       "nikitabobko/tap"
     ];
     casks = [ 
@@ -28,12 +27,12 @@
       "aerospace"
     ];
     brews = [ 
-      "oven-sh/bun/bun" # Bun (best JS engine)
       "zoxide" # Zoxide (cd replacement)
       "helix" # Helix (neovim replacement)
       "nushell" # Nushell (data based shell)
       "direnv" # Direnv (navigate through folders and import .env file automatically)
       "eza" # Colorful ls
+      "mise" # Runtime manager for various programs like NodeJS, Bun, PHP and others
     ];
   };
 }
