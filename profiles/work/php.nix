@@ -17,5 +17,6 @@ in {
   home-manager.users."${username}".programs = {
     zsh.shellAliases = aliases;
     fish.shellAliases = aliases;
+    nushell.shellAliases = aliases;
   };
 }
