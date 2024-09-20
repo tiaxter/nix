@@ -24,7 +24,6 @@
       "font-departure-mono" # Pixel font 
       "logi-options+" # Manager for Logitech products
       "karabiner-elements" # Keyboard customiser
-      "aerospace" # Cool tiling window manager for Mac
     ];
     brews = [ 
       "zoxide" # Zoxide (cd replacement)
