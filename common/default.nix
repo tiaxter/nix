@@ -4,10 +4,10 @@
   # nix.package = pkgs.nix;
 
   imports = [
-    ../config/pre-execution-script.nix
-    ../config/homebrew.nix
-    ../config/mac-os-settings.nix
-    ../config/home-manager/home-manager.nix
+    ./pre-execution-script.nix
+    ./homebrew.nix
+    ./mac-os-settings.nix
+    ./home-manager
   ];
 
   # Necessary for using flakes on this system.
