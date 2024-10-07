@@ -24,6 +24,7 @@
       "font-departure-mono" # Pixel font 
       "logi-options+" # Manager for Logitech products
       "karabiner-elements" # Keyboard customiser
+      "whatsapp" # Native Whatsapp Client
     ];
     brews = [ 
       "zoxide" # Zoxide (cd replacement)
