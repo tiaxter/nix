@@ -13,6 +13,7 @@
   homebrew = {
     casks = [
       "slack" # Slack (messaging app)
+      "phpstorm" # PhpStorm (Best PHP IDE in the world)
     ];
   };
 
