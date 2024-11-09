@@ -14,7 +14,6 @@
     casks = [ 
       "warp" # Warp (terminal)
       "aerospace" # Aerospace (tiling window manager)
-      "phpstorm" # PHPStorm
       "raycast" # Raycast (spotlight replacement)
       "spotify" # Spotify (music streaming service)
       "arc" # Arc browser
