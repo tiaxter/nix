@@ -6,7 +6,6 @@
       autohide = true; # Set dock auto hide behaviour
       show-recents = false; # Hide recent used application in the dock
       mru-spaces = false; # Disable workspace rearrangement based on used apps
-      expose-group-by-app = true; # Workaround for Aerospace and Mission Control
 
       # Disable hot corners functionality
       wvous-bl-corner = 1;
@@ -66,6 +65,11 @@
     };
 
     CustomSystemPreferences = {
+      # Workaround for Aerospace and Mission Control
+      "com.apple.dock" = {
+        "expose-group-apps" = true;
+      };
+
       # Disable cmd-space for native spotlight
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
@@ -77,7 +81,7 @@
     };
 
     CustomUserPreferences = {
-      # Disable dictation on double 'cltr' press
+      # Disable dictation on double 'ctrl' press
       "com.apple.HIToolbox" = {
         AppleFnUsageType = 0;
       };
