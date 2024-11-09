@@ -2,9 +2,6 @@
   system.activationScripts = {
     # Install Homebrew before nix script execution
     preUserActivation.text = ''
-      # Set 'disable sleep when power adapter attached with closed lid'
-      sudo pmset disablesleep 1
-
       # HidApiTester executable path
       hidapitesterExecutablePath="/usr/local/bin/hidapitester"
 
