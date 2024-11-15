@@ -18,8 +18,6 @@
         "/System/Applications/Launchpad.app"
         "/Applications/Arc.app"
         "/Applications/Warp.app"
-        "/Applications/PhpStorm.app"
-        "/Applications/Spotify.app"
       ];
     };
 
