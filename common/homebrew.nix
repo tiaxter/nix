@@ -15,7 +15,6 @@
       "warp" # Warp (terminal)
       "aerospace" # Aerospace (tiling window manager)
       "raycast" # Raycast (spotlight replacement)
-      "spotify" # Spotify (music streaming service)
       "arc" # Arc browser
       "iina" # IINA media player
       "lunar" # Lunar (adaptive brightness for external displays)
