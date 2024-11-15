@@ -12,8 +12,21 @@
   homebrew = {
     casks = [
       "orbstack" # Faster Docker replacement
+      "ngrok" # Ngrok
+      "webstorm" # WebStorm
+      "codeedit" # Code editor that mix XCode and VsCode (pre-alpha)
+    ];
+    brews = [
+      "zig" # Zig programming language
+      "zls" # Zig LSP
+      "deno" # Deno
     ];
   };
+
+  # Add WebStorm icon to the dock
+  system.defaults.dock.persistent-apps = [
+    "/Applications/WebStorm.app"
+  ];
 
   system.activationScripts.preUserActivation.text = lib.mkAfter ''
     echo "Personal profile"
