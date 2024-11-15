@@ -17,6 +17,11 @@
     ];
   };
 
+  # Add PhpStorm icon to the dock
+  system.defaults.dock.persistent-apps = [
+    "/Applications/PhpStorm.app"
+  ];
+
   system.activationScripts.preUserActivation.text = lib.mkAfter ''
     echo "Work profile"
   '';
