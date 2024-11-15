@@ -70,6 +70,7 @@ Notes = 'n'
 Music = 'm'
 Symposium = 's'
 Files = 'f'
+Whatsapp = 'w'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -138,7 +139,7 @@ alt-Symposium = 'workspace Symposium'
 alt-Terminal = 'workspace Terminal'
 alt-u = 'workspace U'
 alt-v = 'workspace V'
-alt-w = 'workspace W'
+alt-Whatsapp = 'workspace Whatsapp'
 alt-x = 'workspace X'
 alt-y = 'workspace Y'
 alt-z = 'workspace Z'
@@ -160,7 +161,7 @@ alt-shift-Symposium = 'move-node-to-workspace Symposium'
 alt-shift-Terminal = 'move-node-to-workspace Terminal'
 alt-shift-u = 'move-node-to-workspace U'
 alt-shift-v = 'move-node-to-workspace V'
-alt-shift-w = 'move-node-to-workspace W'
+alt-shift-w = 'move-node-to-workspace Whatsapp'
 alt-shift-x = 'move-node-to-workspace X'
 alt-shift-y = 'move-node-to-workspace Y'
 alt-shift-z = 'move-node-to-workspace Z'
@@ -193,18 +194,26 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# Code workspace
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.PhpStorm'
 run = 'move-node-to-workspace Code'
 
 [[on-window-detected]]
+if.app-id = 'com.jetbrains.WebStorm'
+run = 'move-node-to-workspace Code'
+
+# Terminal workspace
+[[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
 run = 'move-node-to-workspace Terminal'
 
+# Music workspace
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
+if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace Music'
 
+# Symposium workspace
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace Symposium'
@@ -217,14 +226,22 @@ run = 'move-node-to-workspace Symposium'
 if.app-id = 'com.microsoft.Outlook'
 run = 'move-node-to-workspace Symposium'
 
+# Browser workspace
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace Browser'
 
+# Note workspace
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace Notes'
 
+# Finder workspace
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace Files'
+
+# Whatsapp workspace
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace Whatsapp'
