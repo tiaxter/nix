@@ -16,6 +16,7 @@
       "webstorm" # WebStorm
       "codeedit" # Code editor that mix XCode and VsCode (pre-alpha)
       "mediainfo" # Display video and audio files details
+      "zed" # Zed code editor written in Rust
     ];
     brews = [
       "zig" # Zig programming language
