@@ -17,6 +17,7 @@
       "codeedit" # Code editor that mix XCode and VsCode (pre-alpha)
       "mediainfo" # Display video and audio files details
       "zed" # Zed code editor written in Rust
+      "mkvtoolnix" # Tool to create MKV files
     ];
     brews = [
       "zig" # Zig programming language
