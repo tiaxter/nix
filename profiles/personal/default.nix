@@ -15,6 +15,7 @@
       "ngrok" # Ngrok
       "webstorm" # WebStorm
       "codeedit" # Code editor that mix XCode and VsCode (pre-alpha)
+      "mediainfo" # Display video and audio files details
     ];
     brews = [
       "zig" # Zig programming language
