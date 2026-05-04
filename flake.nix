@@ -4,12 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # Lix (Nix replacement)
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Nix-darwin
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -23,7 +17,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, lix-module, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     username = "tiaxter";
     email = "jerrytiapalmiotto@gmail.com";
@@ -60,8 +54,7 @@
     # Build darwin flake using:
     # $ nix run nix-darwin -- switch --flake .#personal
     darwinConfigurations."personal" = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        lix-module.nixosModules.default
+      modules = [
         home-manager.darwinModules.home-manager
         ./profiles/personal
         args
@@ -71,7 +64,6 @@
     # $ nix run nix-darwin -- switch --flake .#work
     darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
       modules = [
-        lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
         ./profiles/work
         args

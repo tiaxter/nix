@@ -1,5 +1,5 @@
-{ config, pkgs, lib, ...}: 
-let 
+{ config, pkgs, lib, ...}:
+let
     cfg = config.modules.homeManager;
 in {
   # Params
@@ -61,13 +61,10 @@ in {
           # Enable fish shell
           fish.enable = true;
 
-          # Enable nushell
-          nushell.enable = true;
-
           eza = {
             enable = true;
             git = true;
-            icons = true;
+            icons = "auto";
           };
         };
 
@@ -87,6 +84,9 @@ in {
 
         # IdeaVIM configuration
         home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
+
+        # Ghostty configuration
+        xdg.configFile.ghostty.source = ./ghostty;
       };
     };
   };

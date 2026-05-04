@@ -1,0 +1,4 @@
+theme = catppuccin-frappe
+font-family = "Departure Mono"
+window-padding-x = 16
+window-padding-y = 16

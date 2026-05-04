@@ -4,7 +4,6 @@
     enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
-    options = [ "--cmd cd" ]; # use "cd" alias
+options = [ "--cmd cd" ]; # use "cd" alias
   };
 }

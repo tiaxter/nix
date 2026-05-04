@@ -21,8 +21,4 @@
   system.defaults.dock.persistent-apps = [
     "/Applications/PhpStorm.app"
   ];
-
-  system.activationScripts.preUserActivation.text = lib.mkAfter ''
-    echo "Work profile"
-  '';
 }

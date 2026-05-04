@@ -30,8 +30,4 @@
   system.defaults.dock.persistent-apps = [
     "/Applications/WebStorm.app"
   ];
-
-  system.activationScripts.preUserActivation.text = lib.mkAfter ''
-    echo "Personal profile"
-  '';
 }

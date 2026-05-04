@@ -16,8 +16,8 @@
       # Set pinned apps on the dock
       persistent-apps = [
         "/System/Applications/Launchpad.app"
-        "/Applications/Arc.app"
-        "/Applications/Warp.app"
+        "/Applications/Helium.app"
+        "/Applications/Ghostty.app"
       ];
     };
 
@@ -114,5 +114,5 @@
   };
 
   # Enable sudo authentication with Touch ID.
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }

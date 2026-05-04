@@ -11,20 +11,22 @@
     taps = [
       "nikitabobko/tap"
     ];
-    casks = [ 
-      "warp" # Warp (terminal)
+    casks = [
+      "ghostty" # Ghostty (terminal)
       "aerospace" # Aerospace (tiling window manager)
       "raycast" # Raycast (spotlight replacement)
       "arc" # Arc browser
       "iina" # IINA media player
       "lunar" # Lunar (adaptive brightness for external displays)
       "yaak" # Yaak (a lightweight Postman alternative)
-      "font-departure-mono" # Pixel font 
+      "font-departure-mono" # Pixel font
       "logi-options+" # Manager for Logitech products
       "karabiner-elements" # Keyboard customiser
       "whatsapp" # Native Whatsapp Client
+      "claude-code"
+      "claude"
     ];
-    brews = [ 
+    brews = [
       "zoxide" # Zoxide (cd replacement)
       "helix" # Helix (neovim replacement)
       "nushell" # Nushell (data based shell)

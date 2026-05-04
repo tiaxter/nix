@@ -40,6 +40,24 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Disable cmd-period keystroke",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "period",
+                  "modifiers": {
+                    "mandatory": ["command"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": {
+                  "key_code": "vk_none"
+                },
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
